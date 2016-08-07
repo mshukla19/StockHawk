@@ -13,6 +13,7 @@ import com.google.android.gms.gcm.GcmTaskService;
 import com.google.android.gms.gcm.TaskParams;
 import com.sam_chordas.android.stockhawk.data.QuoteColumns;
 import com.sam_chordas.android.stockhawk.data.QuoteProvider;
+import com.sam_chordas.android.stockhawk.rest.InvalidStockException;
 import com.sam_chordas.android.stockhawk.rest.Utils;
 
 import java.io.IOException;
@@ -51,7 +52,7 @@ public class StockTaskService extends GcmTaskService{
   }
 
   @Override
-  public int onRunTask(TaskParams params){
+  public int onRunTask(TaskParams params) {
     Cursor initQueryCursor;
     if (mContext == null){
       mContext = this;
@@ -124,8 +125,13 @@ public class StockTaskService extends GcmTaskService{
             mContext.getContentResolver().update(QuoteProvider.Quotes.CONTENT_URI, contentValues,
                 null, null);
           }
-          mContext.getContentResolver().applyBatch(QuoteProvider.AUTHORITY,
-              Utils.quoteJsonToContentVals(getResponse));
+            try {
+                mContext.getContentResolver().applyBatch(QuoteProvider.AUTHORITY,
+                    Utils.quoteJsonToContentVals(getResponse));
+            } catch (InvalidStockException e) {
+                Log.d(LOG_TAG,e.getMessage());
+                return Utils.INVALID_STOCK_RESULT;
+            }
         }catch (RemoteException | OperationApplicationException e){
           Log.e(LOG_TAG, "Error applying batch insert", e);
         }
