@@ -1,16 +1,18 @@
 <resources>
-  <string name="app_name">Stock Hawk</string>
+    <string name="app_name">Stock Hawk</string>
 
-  <string name="action_example">Example action</string>
+    <string name="action_example">Example action</string>
 
-  <string name="action_settings">Settings</string>
-  <string name="action_change_units">Change Units</string>
-  <string name="symbol_search">Symbol Search</string>
-  <string name="content_test">Search for a Stock Symbol</string>
-  <string name="input_hint">FB</string>
-  <string name="input_prefill"></string>
-  <string name="error">Error</string>
-  <string name="network_toast">Uh-oh! This app requires an internet connection</string>
-  <string name="new_stocks_button_cd">Add New Stocks Button</string>
-  <string name="widgetTitle">Stocks on the go</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_change_units">Change Units</string>
+    <string name="symbol_search">Symbol Search</string>
+    <string name="content_test">Search for a Stock Symbol</string>
+    <string name="input_hint">FB</string>
+    <string name="input_prefill"></string>
+    <string name="error">Error</string>
+    <string name="network_toast">Uh-oh! This app requires an internet connection</string>
+    <string name="add_stock">Please add a stock by clicking on the plus button</string>
+    <string name="invalid_stocks">No network connection. Stock data my be invalid</string>
+    <string name="new_stocks_button_cd">Add New Stocks Button</string>
+    <string name="widgetTitle">Stocks on the go</string>
 </resources>
