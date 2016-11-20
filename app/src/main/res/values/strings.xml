@@ -12,4 +12,5 @@
   <string name="error">Error</string>
   <string name="network_toast">Uh-oh! This app requires an internet connection</string>
   <string name="new_stocks_button_cd">Add New Stocks Button</string>
+  <string name="widgetTitle">Stocks on the go</string>
 </resources>
