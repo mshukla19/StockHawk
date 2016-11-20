@@ -1,6 +1,5 @@
 package com.sam_chordas.android.stockhawk.widget;
 
-import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -27,12 +26,9 @@ public class QuoteWidgetRemoteService extends RemoteViewsService {
 class ListViewFactory implements RemoteViewsService.RemoteViewsFactory {
     private Context mContext;
     private Cursor mCursor;
-    private int mAppWidgetId;
 
-    public ListViewFactory(Context context, Intent intent) {
+    ListViewFactory(Context context, Intent intent) {
         mContext = context;
-        mAppWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
-                AppWidgetManager.INVALID_APPWIDGET_ID);
     }
 
     public void onCreate() {

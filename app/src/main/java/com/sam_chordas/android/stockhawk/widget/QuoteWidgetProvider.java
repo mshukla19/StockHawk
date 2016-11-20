@@ -7,7 +7,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Handler;
 import android.os.HandlerThread;
 import android.widget.RemoteViews;
 
@@ -22,14 +21,10 @@ public class QuoteWidgetProvider extends AppWidgetProvider {
 
     public static String CLICK_ACTION = "com.sam_chordas.android.quotelistwidget.CLICKQUOTE";
 
-    private static HandlerThread sWorkerThread;
-    private static Handler sWorkerQueue;
-
 
     public QuoteWidgetProvider() {
-        sWorkerThread = new HandlerThread("QuoteWidget-worker");
+        HandlerThread sWorkerThread = new HandlerThread("QuoteWidget-worker");
         sWorkerThread.start();
-        sWorkerQueue = new Handler(sWorkerThread.getLooper());
     }
 
     @Override
@@ -73,9 +68,9 @@ public class QuoteWidgetProvider extends AppWidgetProvider {
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
 
-        for (int i = 0; i < appWidgetIds.length; ++i) {
-            RemoteViews layout = buildLayout(context, appWidgetIds[i]);
-            appWidgetManager.updateAppWidget(appWidgetIds[i], layout);
+        for (int appWidgetId : appWidgetIds) {
+            RemoteViews layout = buildLayout(context, appWidgetId);
+            appWidgetManager.updateAppWidget(appWidgetId, layout);
         }
         super.onUpdate(context, appWidgetManager, appWidgetIds);
     }
